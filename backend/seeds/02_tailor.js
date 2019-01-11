@@ -11,7 +11,9 @@ exports.seed = function(knex, Promise) {
           category: 'Tailor',
           website: 'http://www.tailordenver.com/',
           phone: '303-477-5631',
-          location:'910 16th St Mall #207, Denver, CO 80202'
+          location:'910 16th St Mall #207, Denver, CO 80202',
+          username: 'dphonelath',
+          password: '123456'
         },
         {
           id: 2, 
@@ -19,7 +21,9 @@ exports.seed = function(knex, Promise) {
           category: 'Tailor',
           website: 'http://dumaninc.com/',
           phone: '303-832-1701',
-          location:'438 E Colfax Ave, Denver, CO 80203'
+          location:'438 E Colfax Ave, Denver, CO 80203',
+          username: 'dphonelath',
+          password: '123456'
         },
         {
           id: 3, 
@@ -27,7 +31,9 @@ exports.seed = function(knex, Promise) {
           category: 'Tailor',
           website: 'https://www.denvertailoring.com/',
           phone: '303-282-5566',
-          location:'260 S Downing St, Denver, CO 80209'
+          location:'260 S Downing St, Denver, CO 80209',
+          username: 'dphonelath',
+          password: '123456'
         },
         {
           id: 4, 
@@ -35,7 +41,9 @@ exports.seed = function(knex, Promise) {
           category: 'Cobbler',
           website: 'http://www.westerfieldcobblers.com/',
           phone: '303-534-2034',
-          location:'1512 Larimer St. #43R, 16th and Lawrence next to Starbucks, Denver, CO 80202'
+          location:'1512 Larimer St. #43R, 16th and Lawrence next to Starbucks, Denver, CO 80202',
+          username: 'dphonelath',
+          password: '123456'
         },
         {
           id: 5, 
@@ -43,7 +51,9 @@ exports.seed = function(knex, Promise) {
           category: 'Tailor',
           website: 'https://www.erolstailoring.com/',
           phone: '303-377-2400',
-          location:'314 Columbine St, Denver, CO 80206'
+          location:'314 Columbine St, Denver, CO 80206',
+          username: 'dphonelath',
+          password: '123456'
         },
         {
           id: 6, 
@@ -51,7 +61,9 @@ exports.seed = function(knex, Promise) {
           category: 'Cobbler',
           website: 'https://www.cobblerscornerdenver.com/',
           phone: '303-623-3838',
-          location:'826 17th St, Denver, CO 80202'
+          location:'826 17th St, Denver, CO 80202',
+          username: 'dphonelath',
+          password: '123456'
         },
         {
           id: 7, 
@@ -59,7 +71,9 @@ exports.seed = function(knex, Promise) {
           category: 'Cobbler',
           website: 'http://www.rhinescobblerschool.com/',
           phone: '(303) 832-6345',
-          location:'221 E 17th Ave, Denver, CO 80203'
+          location:'221 E 17th Ave, Denver, CO 80203',
+          username: 'dphonelath',
+          password: '123456'
         },
       ]);
     });

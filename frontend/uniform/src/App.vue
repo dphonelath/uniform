@@ -5,12 +5,14 @@
 <script>
   import { StackNavigator } from "vue-native-router";
   import MainScreen from "./Main";
-  import AnotherScreen from "./Another"
+  import SignUpScreen from "./SignUp";
+  import MeasurementScreen from "./Measurement";
   
   const AppNavigation = StackNavigator(
     {
       Main: MainScreen,
-      Another: AnotherScreen,
+      SignUp: SignUpScreen,
+      Measurement: MeasurementScreen
     },
     {
       initialRouteName: 'Main',

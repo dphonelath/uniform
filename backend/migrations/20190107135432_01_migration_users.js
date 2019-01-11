@@ -5,11 +5,14 @@ exports.up = function(knex, Promise) {
         table.string('firstName')
         table.string('lastName')
         table.string('email')
+        table.string('username')
+        table.string('password')
         table.text('phone')
         table.decimal('armLength')
         table.decimal('chest')
         table.decimal('waist')
         table.decimal('hip')
+        table.decimal('inseam')
     })
 };
 

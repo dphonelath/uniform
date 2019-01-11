@@ -9,77 +9,98 @@ exports.seed = function(knex, Promise) {
           firstName: 'Daniel',
           lastName: 'Phonelath',
           email: 'daniel.phonelath@gmail.com',
+          username: 'dphonelath',
+          password: '123456',
           phone: '123-456-7890',
           armLength: 42,
           chest: 37,
           waist: 38,
-          hip: null
+          hip: null,
+          inseam: 42
         },
         {
           id: 2, 
           firstName: 'Jaycie',
           lastName: 'Phonelath',
           email: 'jphonelath@gmail.com',
+          username: 'dphonelath',
+          password: '123456',
           phone: '123-456-7890',
           armLength: 42,
           chest: 37,
           waist: 38,
-          hip: 42
+          hip: 42,
+          inseam: 42
         },
         {
           id: 3, 
           firstName: 'Nathan',
           lastName: 'Zick-Smith',
           email: 'nzs@gmail.com',
+          username: 'dphonelath',
+          password: '123456',
           phone: '123-456-7890',
           armLength: 42,
           chest: 37,
           waist: 38,
-          hip: null
+          hip: null,
+          inseam: 42
         },
         {
           id: 4, 
           firstName: 'Cam',
           lastName: 'Heitmieir',
           email: 'cam123@gmail.com',
+          username: 'dphonelath',
+          password: '123456',
           phone: '123-456-7890',
           armLength: 42,
           chest: 37,
           waist: 38.9,
-          hip: null
+          hip: null,
+          inseam: 42
         },
         {
           id: 5, 
           firstName: 'Xan',
           lastName: 'Mitkus',
           email: 'xanax@gmail.com',
+          username: 'dphonelath',
+          password: '123456',
           phone: '123-456-7890',
           armLength: 42,
           chest: 37,
           waist: 38.9,
-          hip: null
+          hip: null,
+          inseam: 42
         },        
         {
           id: 6, 
           firstName: 'Gretchen',
           lastName: 'Christoff',
           email: 'gchristoff@gmail.com',
+          username: 'dphonelath',
+          password: '123456',
           phone: '123-456-7890',
           armLength: 42,
           chest: 37,
           waist: 38.9,
-          hip: 42
+          hip: 42,
+          inseam: 42
         },
         {
           id: 7, 
           firstName: 'Noami',
           lastName: 'Campbell',
           email: 'nCampbell@gmail.com',
+          username: 'dphonelath',
+          password: '123456',
           phone: '123-456-7890',
           armLength: 42,
           chest: 37,
           waist: 38.9,
-          hip: null
+          hip: null,
+          inseam: 42
         },
       ]);
     });

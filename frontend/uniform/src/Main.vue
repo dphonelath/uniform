@@ -1,26 +1,50 @@
 <template>
   <view class="container">
     <image 
-      :style="{width: 290, height: 400}"
+      :style="{width: 290, height: 400, }"
       :source="logo" />
     <text-input
-      :style="{height: 40, width: 250, margin:10, borderBottomColor: 'gray', borderBottomWidth: 3}"
-      v-model= "text"
+      :style= textInputStyle
       placeholder= "Username"
     />
     <text-input
-      :style="{height: 40, width: 250, margin:10, borderBottomColor: 'gray', borderBottomWidth: 3}"
-      v-model= "text"
+      :style= textInputStyle
       placeholder= "Password"
     />
     <touchable-opacity 
-      :on-press="onPressButton"
-      :style="{height: 40, width: 250, margin:10, borderColor: 'gray', borderWidth: 3, borderRadius: 5}"
+      :on-press="handleButton"
+      :style="{
+        height: 45, 
+        width: 250, 
+        margin: 15,  
+        borderWidth: 0, 
+        borderRadius: 20,
+        backgroundColor: '#F8B500'
+        }"
     >
       <button
         :on-press="onPressButton"
         title="Sign In"
-        color="#841584"
+        color="#fff"
+        :style="{
+          fontWeight: 100, 
+          }"
+      />
+    </touchable-opacity>
+    <Text
+      :style="{
+        fontSize:20,
+      }"
+      >
+      New to Uniform?
+    </Text>
+    <touchable-opacity 
+      :on-press="handleButton"
+    >
+      <button
+        :on-press="handleButton"
+        title="Sign Up Here!"
+        color="blue"
       />
     </touchable-opacity>
   </view>
@@ -39,22 +63,26 @@ export default {
   },
   data(){
     return{
-      text: '',
-      message: 'Hello, motherfuckin\' world!',
-      myInput: '',
+      textInputStyle: {
+        height: 40, 
+        width: 250, 
+        margin:10, 
+        borderBottomColor: 'gray', 
+        borderBottomWidth: 3
+      },
       logo
   }},
   methods: {
     handleButton() {
       this.myInput = 'Button clicked'
-      this.navigation.navigate("Another")
+      this.navigation.navigate("SignUp")
     },
     onPressButton: function() {
       alert('Clicked Image')
     },
     handleListTap() {
       console.log('poop');
-    }
+    },
   }
 }
 </script>
@@ -71,4 +99,5 @@ export default {
 .text-color-primary {
   color: blue;
 }
+
 </style>

@@ -7,7 +7,8 @@ exports.up = function(knex, Promise) {
         table.string('website')
         table.text('phone')
         table.string('location')
-        
+        table.string('username')
+        table.string('password')
     })
 };
 
