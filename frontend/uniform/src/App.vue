@@ -7,12 +7,16 @@
   import MainScreen from "./Main";
   import SignUpScreen from "./SignUp";
   import MeasurementScreen from "./Measurement";
+  import ProfileScreen from "./Profile";
+  import RequestScreen from "./Request";
   
   const AppNavigation = StackNavigator(
     {
       Main: MainScreen,
       SignUp: SignUpScreen,
-      Measurement: MeasurementScreen
+      Measurement: MeasurementScreen,
+      Profile: ProfileScreen,
+      Request: RequestScreen
     },
     {
       initialRouteName: 'Main',

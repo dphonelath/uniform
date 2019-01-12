@@ -34,7 +34,7 @@
                 margin: 15,  
                 borderWidth: 0, 
                 borderRadius: 20,
-                backgroundColor: '#F8B500'
+                backgroundColor: '#3F5060'
                 }"
         >
         <button
@@ -72,15 +72,12 @@ export default {
         headerStyle: {
             fontSize: 25,
             fontWeight: 'bold',
-            width: '80%' ,
-            backgroundColor: '#00ADB5',
-            color: '#F8B500',
+            width: '100%' ,
+            backgroundColor: '#03ADB5',
+            color: '#fff',
             padding:15,
             marginBottom:30,
             marginTop: 30,
-            borderWidth: 3,
-            borderRadius: 20,
-            borderColor: '#fff',
             alignItems: 'center',
             textAlign: 'center',
             overflow: 'hidden'
@@ -90,7 +87,7 @@ export default {
     methods: {
         handleButton() {
         this.myInput = 'Button clicked'
-        this.navigation.navigate("")
+        this.navigation.navigate("Profile")
         },
         onPressButton: function() {
         alert('Clicked Image')

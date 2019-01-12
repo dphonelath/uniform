@@ -35,7 +35,7 @@
                 margin: 15,  
                 borderWidth: 0, 
                 borderRadius: 20,
-                backgroundColor: '#F8B500'
+                backgroundColor: '#3F5060'
                 }"
         >
         <button
