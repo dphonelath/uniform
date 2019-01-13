@@ -1,9 +1,61 @@
 <template>
         <view class="container">
-            <Text>Request form</Text>
-            <image 
+            <text :style= headerStyle>Request Form</text>
+            <!-- <image 
                 class= "profile-pic"
-                :source= "ProfilePic" />
+                :source= "ProfilePic" /> -->
+            <touchable-opacity 
+            :on-press="handleButton"
+            :style= profileCard
+            >
+                <image 
+                    class= "profile-pic"
+                    :source= "ProfilePic" />
+                <text :style= profileName>
+                    Daniel Phonelath
+                </text>
+                <text :style= profileLocation>
+                    Denver, CO
+                </text>
+            </touchable-opacity>
+            <touchable-opacity 
+            :on-press="handleButton"
+            :style= mapCard
+            >
+                <image 
+                    class= "map-pic"
+                    :source= "Map" />
+                <text :style= profileName>
+                    Vaji's Tailor & Alterations
+                </text>
+                <text :style= profileLocation>
+                    910 16th St Mall #207, Denver, CO 80202
+                </text>
+                <image 
+                    class= "map-pic"
+                    :source= "Map" />
+            </touchable-opacity>
+            <touchable-opacity 
+            :on-press="handleButton"
+            :style="{
+                height: 45, 
+                width: 250, 
+                margin: 15,  
+                borderWidth: 0, 
+                borderRadius: 20,
+                backgroundColor: '#3F5060'
+                }"
+            >
+                <button
+                    :on-press="handleButton"
+                    title="Submit"
+                    color="#fff"
+                    :style="{
+                    fontWeight: 500, 
+                    }"
+                />
+            </touchable-opacity>
+            
         </view>
 </template>
 
@@ -32,27 +84,46 @@ export default {
             borderBottomWidth: 3
         },
         headerStyle: {
-            fontSize: 25,
+            fontSize: 30,
             fontWeight: 'bold',
             width: '100%' ,
             backgroundColor: '#03ADB5',
             color: '#fff',
             padding:15,
             marginBottom:30,
-            marginTop: 30,
             alignItems: 'center',
             textAlign: 'center',
             overflow: 'hidden'
         },
+        profileCard: {
+            height: 170, 
+            width: 350, 
+            margin: 15,  
+            borderWidth: 0, 
+            borderRadius: 20,
+            backgroundColor: '#3F5060',
+        },
+        mapCard: {
+            height: 500, 
+            width: 350, 
+            margin: 15,  
+            borderWidth: 0, 
+            borderRadius: 20,
+            backgroundColor: '#3F5060',
+        },
         profileName: {
-            fontSize: 25,
+            fontSize: 20,
             fontWeight: 'bold',
-            color: '#fff'
+            color: '#fff',
+            paddingLeft: 170,
+            paddingTop: 40
         },
         profileLocation: {
-            fontSize: 20,
+            fontSize: 15,
             fontWeight: '400',
             color: '#fff',
+            paddingLeft: 170,
+            paddingTop: 10
         },
         logo, 
         ProfileHead,
@@ -84,14 +155,18 @@ export default {
     height: 100%;
 }
 .profile-pic {
-    height: 170px;
-    width: 170px;
+    height: 120px;
+    width: 120px;
     border-width: 6px;
     border-color: #fff;
-    border-radius: 85px;
+    border-radius: 60px;
     position: absolute;
-    left: 120px;
-    top: 130px;
+    left: 20px;
+    top: 20px;
     z-index: 7;
+}
+.map-pic{
+    width: 300px;
+    height: 400px;
 }
 </style>
