@@ -1,14 +1,14 @@
 {
-  "name": "backend",
+  "name": "uniform",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend for uniform app",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Daniel Phonelath",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -17,5 +17,14 @@
     "express": "^4.16.4",
     "knex": "^0.16.3",
     "pg": "^7.7.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dphonelath/uniform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dphonelath/uniform/issues"
+  },
+  "homepage": "https://github.com/dphonelath/uniform#readme"
 }
