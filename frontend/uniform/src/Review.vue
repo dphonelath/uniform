@@ -1,7 +1,7 @@
 <template>
     <scroll-view>
         <view class="container">
-            <text :style= headerStyle>Request Form</text>
+            <text :style= headerStyle>Review Appointment</text>
             <!-- <image 
                 class= "profile-pic"
                 :source= "ProfilePic" /> -->
@@ -20,9 +20,9 @@
                 </text>
             </touchable-opacity>
             <view 
-            :on-press="handleButton"
-            :style= requestCard
-            >
+                :on-press="handleButton"
+                :style= requestCard
+                >
                 <text :style= mapName>
                     Vaji's Tailor & Alterations
                 </text>
@@ -32,136 +32,19 @@
                 <image 
                     class= "vaji-pic"
                     :source= "Vaji" />
-                <touchable-opacity 
-                    :on-press= "handleButton"
-                    :style= generalButton
-                    >
-                <button
-                    :on-press= "handleButton"
-                    title="Choose Tailor"
-                    color="#fff"
-                    :style="{
-                    fontWeight: 500, 
-                    }"
-                />
-            </touchable-opacity>
-            </view>
-            <scroll-view>
-                <view
-                    :on-press="handleButton"
-                    :style= alterationCard
-                >
-                    <touchable-opacity
-                        class= 'icons-button'
-                        :on-press="handleButton"
-                        title="Shirt Alterations"
-                    >
-                        <image 
-                            class= "icons-pic"
-                            :source= "Shirt" />
-                        <text class= "icon-text">Shirt Alterations</text>
-                    </touchable-opacity>
-                    <touchable-opacity
-                        class= 'icons-button'
-                        :on-press="handleButton"
-                        title="Pant Alterations"
-                    >
-                        <image 
-                            class= "icons-pic"
-                            :source= "Short" />
-                        <text class= "icon-text">Pant Alterations</text>
-                    </touchable-opacity>
-                    <touchable-opacity
-                        class= 'icons-button'
-                        :on-press="handleButton"
-                        title="Shoe Repair"
-                    >
-                        <image 
-                            class= "icons-pic"
-                            :source= "Sneaker" />
-                        <text class= "icon-text">Shoe Repair</text>
-                    </touchable-opacity>
-                    <touchable-opacity
-                        class= 'icons-button'
-                        :on-press="handleButton"
-                        title="Dress Alterations"
-                    >
-                        <image 
-                            class= "icons-pic"
-                            :source= "Dress" />
-                        <text class= "icon-text">Dress Alterations</text>
-                    </touchable-opacity>
-                    <touchable-opacity
-                        class= 'icons-button'
-                        :on-press="handleButton"
-                        title="Suit Alterations"
-                    >
-                        <image 
-                            class= "icons-pic"
-                            :source= "Suit" /> 
-                        <text class= "icon-text">Suit Alterations</text>
-                    </touchable-opacity>  
-                </view>
-            </scroll-view>
-            <view 
-                :on-press="handleButton"
-                :style= requestCard
-                >
-                    <text class= "description-text">Photos</text>
-                    <touchable-opacity
-                        :style= generalButton
-                        :on-press="handleButton"
-                        title="Take Photos"
-                    >
-                        <button
-                            :on-press="handleButton"
-                            title="Take Photos"
-                            color="#fff"
-                            :style="{
-                            fontWeight: 500, 
-                            }"
-                        />
-                    </touchable-opacity>
-                    <touchable-opacity
-                        :style= generalButton
-                        :on-press="handleButton"
-                        title="Upload Photos"
-                    >
-                        <button
-                            :on-press="handleButton"
-                            title="Upload Photos"
-                            color="#fff"
-                            :style="{
-                                fontWeight: 500, 
-                            }"
-                        />
-                    </touchable-opacity>
-                    <image 
+                <text class= "description-text">Photos</text>
+                <image 
                         class= "vaji-pic"
                         :source= "Blazer" />
-            </view>
-            <view 
-                :style= requestCard
-            >
                 <text class="description-text">Description</text>
-                <text-input
-                    :style= descriptionBox
-                    placeholder= "Describe the alteration or repair"
-                />
-            </view>
-            <view 
-                :style= requestCard
-                >
-                <text class="description-text">Select Time & Date</text>
-                <text-input
-                    :style= descriptionBox
-                    placeholder= "Describe the alteration or repair"
-                    />
+                <text
+                    class="description-input"
+                >I would like to have this blazer brought in in the waist. It is baggin around my chest and hips.</text>
             </view>
             <touchable-opacity 
                 :on-press="handleButton"
                 :style= generalButton
-            >
+                >
                 <button
                     :on-press="handleButton"
                     title="Submit"
@@ -227,16 +110,7 @@ export default {
             backgroundColor: '#3F5060',
         },
         requestCard: {
-            height: 550, 
-            width: 350, 
-            margin: 15,  
-            borderWidth: 0, 
-            borderRadius: 20,
-            backgroundColor: '#3F5060',
-            alignItems: 'center'
-        },
-        requestCard: {
-            height: 600, 
+            height: 1500, 
             width: 350, 
             margin: 15,  
             borderWidth: 0, 
@@ -274,7 +148,9 @@ export default {
             fontWeight: 'bold',
             color: '#fff',
             padding: 15,
-            alignItems: 'center'
+            alignItems: 'center',
+            borderBottomColor: '#fff',
+            borderBottomWidth: 3
         },
         mapLocation: {
             fontSize: 15,
@@ -312,7 +188,7 @@ export default {
     methods: {
         handleButton() {
         this.myInput = 'Button clicked'
-        this.navigation.navigate("Review")
+        this.navigation.navigate("")
         },
         onPressButton: function() {
         alert('Clicked Image')
@@ -374,7 +250,15 @@ export default {
 .description-text{
     font-size: 25px;
     font-weight: 700;
-    margin: 10px;
-    color:#fff
+    margin: 15px;
+    color:#fff;
+}
+.description-input{
+    height: 450px;
+    width: 270px;
+    font-size: 20px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 20;
 }
 </style>
