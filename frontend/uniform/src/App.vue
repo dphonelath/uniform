@@ -9,7 +9,8 @@
   import MeasurementScreen from "./Measurement";
   import ProfileScreen from "./Profile";
   import RequestScreen from "./Request";
-  import ReviewScreen from "./Review"
+  import ReviewScreen from "./Review";
+  import SuccessScreen from "./Success"
   
   const AppNavigation = StackNavigator(
     {
@@ -18,10 +19,11 @@
       Measurement: MeasurementScreen,
       Profile: ProfileScreen,
       Request: RequestScreen,
-      Review: ReviewScreen
+      Review: ReviewScreen,
+      Success: SuccessScreen
     },
     {
-      initialRouteName: "Request",
+      initialRouteName: "Main",
     }
   );
   export default {

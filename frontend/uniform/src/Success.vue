@@ -1,10 +1,11 @@
 <template>
     <scroll-view>
         <view class="container">
-            <text :style= headerStyle>Review Appointment</text>
+            <text :style= headerStyle>Appointment</text>
             <!-- <image 
                 class= "profile-pic"
                 :source= "ProfilePic" /> -->
+            <text class="description-text">Success!</text>
             <touchable-opacity 
                 :on-press="handleButton"
                 :style= profileCard
@@ -19,6 +20,7 @@
                     Denver, CO
                 </text>
             </touchable-opacity>
+            
             <view 
                 :on-press="handleButton"
                 :style= requestCard
@@ -29,21 +31,15 @@
                 <text :style= mapLocation>
                     910 16th St Mall #207, Denver, CO 80202
                 </text>
+                <text :style= mapName>
+                    Drop-off Date: 1/18/19
+                </text>
+                <text :style= mapName>
+                    Pick-up Date: 1/25/19
+                </text>
                 <image 
                     class= "vaji-pic"
                     :source= "Vaji" />
-                <text class= "description-text">Photos</text>
-                <image 
-                        class= "vaji-pic"
-                        :source= "Blazer" />
-                <text class="description-text">Description</text>
-                <text
-                    class="description-input"
-                >I would like to have this blazer brought in in the waist. It is baggin around my chest and hips.</text>
-                <text class= "description-text">Dropoff Date</text>
-                <image 
-                        class= "calendar-pic"
-                        :source= "Calendar" />
             </view>
             <touchable-opacity 
                 :on-press="handleButton"
@@ -91,7 +87,7 @@ export default {
             fontSize: 30,
             fontWeight: 'bold',
             width: '100%' ,
-            backgroundColor: '#03ADB5',
+            backgroundColor: '#00ADB5',
             color: '#fff',
             padding:15,
             marginBottom:30,
@@ -108,7 +104,7 @@ export default {
             backgroundColor: '#3F5060',
         },
         requestCard: {
-            height: 1880, 
+            height: 600, 
             width: 350, 
             margin: 15,  
             borderWidth: 0, 
@@ -176,7 +172,7 @@ export default {
     methods: {
         handleButton() {
         this.myInput = 'Button clicked'
-        this.navigation.navigate("Success")
+        this.navigation.navigate("Profile")
         },
         onPressButton: function() {
         alert('Clicked Image')
@@ -236,10 +232,10 @@ export default {
     color:#fff
 }
 .description-text{
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 700;
     margin: 15px;
-    color:#fff;
+    color:#000;
 }
 .description-input{
     height: 450px;

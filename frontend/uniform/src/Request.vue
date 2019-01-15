@@ -150,13 +150,26 @@
                 />
             </view>
             <view 
-                :style= requestCard
+                :style= dateCard
                 >
-                <text class="description-text">Select Time & Date</text>
-                <text-input
-                    :style= descriptionBox
-                    placeholder= "Describe the alteration or repair"
-                    />
+                <text class="description-text">Select Drop-off Date</text>
+                <image 
+                        class= "calendar-pic"
+                        :source= "Calendar" />
+                <touchable-opacity
+                        :style= generalButton
+                        :on-press="handleButton"
+                        title="Take Photos"
+                    >
+                        <button
+                            :on-press="handleButton"
+                            title="Select Date"
+                            color="#fff"
+                            :style="{
+                            fontWeight: 500, 
+                            }"
+                        />
+                </touchable-opacity>
             </view>
             <touchable-opacity 
                 :on-press="handleButton"
@@ -176,8 +189,8 @@
 </template>
 
 <script>
-import React from 'react'
-import { Text, Image} from 'react-native'
+import React from 'react';
+import { Text, Image} from 'react-native';
 import logo from "./assets/images/uniform-logo2.png";
 import ProfileHead from "./assets/images/profile-header.png";
 import ProfilePic from "./assets/images/profile-pic.png";
@@ -188,7 +201,8 @@ import Shirt from "./assets/icons/shirt.png";
 import Short from "./assets/icons/short.png";
 import Sneaker from "./assets/icons/sneakers.png";
 import Suit from "./assets/icons/suit.png";
-import Blazer from "./assets/images/suit.jpg"
+import Blazer from "./assets/images/suit.jpg";
+import Calendar from "./assets/images/calendar.png"
 
 
 export default {
@@ -298,6 +312,15 @@ export default {
             margin: 20,
             borderRadius: 20
         },
+        dateCard: {
+            height: 440, 
+            width: 350, 
+            margin: 15,  
+            borderWidth: 0, 
+            borderRadius: 20,
+            backgroundColor: '#3F5060',
+            alignItems: 'center'
+        },
         logo, 
         ProfileHead,
         ProfilePic,
@@ -307,7 +330,8 @@ export default {
         Short,
         Sneaker,
         Suit,
-        Blazer
+        Blazer,
+        Calendar
     }},
     methods: {
         handleButton() {
@@ -353,7 +377,6 @@ export default {
     width: 80px;
     margin-right: 20px;
     margin-left: 25px
-
 }
 .icons-button{
     display: flex;
@@ -376,5 +399,9 @@ export default {
     font-weight: 700;
     margin: 10px;
     color:#fff
+}
+.calendar-pic {
+    height:300px;
+    width: 300px;
 }
 </style>
