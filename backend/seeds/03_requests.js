@@ -11,6 +11,7 @@ exports.seed = function(knex, Promise) {
           photoURL: 'photo.com',
           tailorsID: 1,
           usersID: 3,
+          dropoffDate: '1/18/19' 
         },
         {
           id: 2, 
@@ -18,6 +19,7 @@ exports.seed = function(knex, Promise) {
           photoURL: 'photo.com',
           tailorsID: 4,
           usersID: 3,
+          dropoffDate: '1/18/19' 
         },
         {
           id: 3, 
@@ -25,6 +27,7 @@ exports.seed = function(knex, Promise) {
           photoURL: 'photo.com',
           tailorsID: 2,
           usersID: 1,
+          dropoffDate: '1/18/19' 
         },
         {
           id: 4, 
@@ -32,6 +35,7 @@ exports.seed = function(knex, Promise) {
           photoURL: 'photo.com',
           tailorsID: 3,
           usersID: 5,
+          dropoffDate: '1/18/19' 
         },
         {
           id: 5, 
@@ -39,6 +43,7 @@ exports.seed = function(knex, Promise) {
           photoURL: 'photo.com',
           tailorsID: 2,
           usersID: 1,
+          dropoffDate: '1/18/19' 
         },
         {
           id: 6, 
@@ -46,6 +51,7 @@ exports.seed = function(knex, Promise) {
           photoURL: 'photo.com',
           tailorsID: 4,
           usersID: 3,
+          dropoffDate: '1/18/19' 
         },
         {
           id: 7, 
@@ -53,6 +59,7 @@ exports.seed = function(knex, Promise) {
           photoURL: 'photo.com',
           tailorsID: 6,
           usersID: 1,
+          dropoffDate: '1/18/19' 
         },
       ]);
     });

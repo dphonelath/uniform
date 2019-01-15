@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
         table.string('photoURL')
         table.integer('usersID').references('users.id').unsigned().onDelete('cascade')
         table.integer('tailorsID').references('tailors.id').unsigned().onDelete('cascade')
+        table.string('dropoffDate')
     })
 };
 
