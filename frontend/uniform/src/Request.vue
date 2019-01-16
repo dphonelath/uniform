@@ -31,12 +31,12 @@
                 </text>
                 <text>Location:</text>
                 <text>{{location.latitude}}</text>
-                <map-view class="container"
+                <!-- <map-view class="container"
                         :initial-region="location"
-                    />
-                <!-- <image 
+                    /> -->
+                <image 
                     class= "vaji-pic"
-                    :source= "Vaji" /> -->
+                    :source= "Vaji" />
                 <touchable-opacity 
                     :on-press= "getLocation"
                     :style= generalButton
@@ -57,11 +57,10 @@
                     :style= alterationCard
                 >
                     <touchable-opacity
-                        class= 'icons-button' 
+                        class= 'icons-button'
                         :on-press="onPressButton"
                         title="Shirt Alterations"
-                        v-bind:class="[alterationItems[0].selected ? 'icons-button2' : 'icons-button']"
-                    >
+                        >
                         <image 
                             class= "icons-pic"
                             :source= "Shirt" />
@@ -98,9 +97,9 @@
                         <text class= "icon-text">Dress Alterations</text>
                     </touchable-opacity>
                     <touchable-opacity
-                        class= 'icons-button'
-                        :on-press="onPressButton"
-                        title="Suit Alterations"
+                        :style = iconButton
+                        :on-press="changeColor"
+                        title="Shirt Alterations"
                     >
                         <image 
                             class= "icons-pic"
@@ -217,11 +216,11 @@ export default {
         image: null,
         hasCameraPermission: false,
         alterationItems: [
-            {selected:false},
-            {selected:false},
-            {selected:false},
-            {selected:false},
-            {selected:false},
+            {selected:"icon-button"},
+            {selected:"icon-button"},
+            {selected:"icon-button"},
+            {selected:"icon-button"},
+            {selected:"icon-button"},
             ],
         iconClass: 'icons-button',
         selectedClass: 'icons-button2',
@@ -238,6 +237,26 @@ export default {
             longitude: -122.406417,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421
+            },
+        iconButton: {
+            flex: 3,
+            flexDirection: 'row',
+            height: 50,
+            width: 300,
+            margin: 15,
+            alignItems: 'center',
+            backgroundColor: '#00ADB5',
+            borderWidth: 0,
+            borderRadius: 20
+            },
+        iconButton2: {
+            height: 100,
+            width: 300,
+            margin: 10,
+            alignItems: 'center',
+            backgroundColor: '#FC3C3C',
+            borderWidth: 0,
+            borderRadius: 20
             },
         textInputStyle: {
             height: 40, 
@@ -375,7 +394,6 @@ export default {
                 aspect: [1, 1]
                 })
                 .then((image) => {
-                    console.log(image)
                     this.image = image
                 })
 
@@ -388,11 +406,15 @@ export default {
             this.navigation.navigate("Review")
         },
         onPressButton: function() {
-            console.log('clicked')
-            console.log(this.alterationItems)
+            this.data.alterationItems = !this.data.alterationItems[4].selected
         },
         handleListTap() {
         console.log('poop');
+        },
+        changeColor() {
+            this.$data.iconButton.backgroundColor = '#FC3C3C'
+            console.log(this.$data.iconButton.backgroundColor)
+
         },
         getLocation: function() {
             Permissions.askAsync(Permissions.LOCATION).then(status => {
@@ -409,7 +431,7 @@ export default {
         }).catch((err)=>{
         console.log(err);
             });
-        }
+        },
     },
     mounted: function() {
         Permissions.askAsync(Permissions.CAMERA)
