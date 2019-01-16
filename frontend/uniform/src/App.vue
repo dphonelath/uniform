@@ -23,7 +23,7 @@
       Success: SuccessScreen
     },
     {
-      initialRouteName: "Main",
+      initialRouteName: "Request",
     }
   );
   export default {

@@ -41,19 +41,6 @@
                     class= "vaji-pic"
                     :source= "Vaji" />
             </view>
-            <touchable-opacity 
-                :on-press="handleButton"
-                :style= generalButton
-                >
-                <button
-                    :on-press="handleButton"
-                    title="Submit"
-                    color="#fff"
-                    :style="{
-                    fontWeight: 500, 
-                    }"
-                />
-            </touchable-opacity>
         </view>
     <scroll-view>
 </template>

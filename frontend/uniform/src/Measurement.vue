@@ -1,52 +1,54 @@
 <template>
-    <view class="container">
-        <image 
-            :style="{width: 200, height: 275, }"
-            :source="logo" />
-        <text :style= headerStyle>
-            Upload Measurements
-        </text>
-        <text-input
-            :style= textInputStyle
-            placeholder= "Arm Length (Inches)"
-        />
-        <text-input
-            :style= textInputStyle
-            placeholder= "Chest (Inches)"
-        />
-        <text-input
-            :style= textInputStyle
-            placeholder= "Waist (Inches)"
-        />
-        <text-input
-            :style= textInputStyle
-            placeholder= "Hips (Inches)"
-        />
-        <text-input
-            :style= textInputStyle
-            placeholder= "Inseam (Inches)"
-        />
-        <touchable-opacity 
-            :on-press="handleButton"
-            :style="{
-                height: 45, 
-                width: 250, 
-                margin: 15,  
-                borderWidth: 0, 
-                borderRadius: 20,
-                backgroundColor: '#3F5060'
+    <!-- <scroll-view> -->
+        <view class="container">
+            <image 
+                :style="{width: 200, height: 275, }"
+                :source="logo" />
+            <text :style= headerStyle>
+                Upload Measurements
+            </text>
+            <text-input
+                :style= textInputStyle
+                placeholder= "Arm Length (Inches)"
+            />
+            <text-input
+                :style= textInputStyle
+                placeholder= "Chest (Inches)"
+            />
+            <text-input
+                :style= textInputStyle
+                placeholder= "Waist (Inches)"
+            />
+            <text-input
+                :style= textInputStyle
+                placeholder= "Hips (Inches)"
+            />
+            <text-input
+                :style= textInputStyle
+                placeholder= "Inseam (Inches)"
+            />
+            <touchable-opacity 
+                :on-press="handleButton"
+                :style="{
+                    height: 45, 
+                    width: 250, 
+                    margin: 15,  
+                    borderWidth: 0, 
+                    borderRadius: 20,
+                    backgroundColor: '#3F5060'
+                    }"
+            >
+            <button
+                :on-press="handleButton"
+                title="Submit"
+                color="#fff"
+                :style="{
+                fontWeight: 500, 
                 }"
-        >
-        <button
-            :on-press="handleButton"
-            title="Submit"
-            color="#fff"
-            :style="{
-            fontWeight: 500, 
-            }"
-        />
-        </touchable-opacity>
-    </view>
+            />
+            </touchable-opacity>
+        </view>
+    <!-- </scroll-view> -->
 </template>
 
 <script>

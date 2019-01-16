@@ -30,9 +30,14 @@
                     }"
                 />
             </touchable-opacity>
-            <image 
-                class= "map-pic"
-                :source= "Map" />
+            <view 
+                :on-press="handleButton"
+                :style= requestCard
+>
+                <map-view class="container"
+                    :initial-region="coordinates"
+                />
+            </view>
             <touchable-opacity 
                 :on-press="handleButton"
                 class= 'tailor-button'
@@ -57,7 +62,8 @@ import { Text, Image} from 'react-native'
 import logo from "./assets/images/uniform-logo2.png";
 import ProfileHead from "./assets/images/profile-header.png";
 import ProfilePic from "./assets/images/profile-pic.png";
-import Map from "./assets/images/map.png"
+import Map from "./assets/images/map.png";
+import { MapView } from "expo";
 
 
 export default {
@@ -68,6 +74,21 @@ export default {
     },
     data(){
         return{
+        coordinates: {
+            latitude: 39.742043,
+            longitude: -104.991531,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421
+        },
+        requestCard: {
+            height: 550, 
+            width: 350, 
+            margin: 15,  
+            borderWidth: 0, 
+            borderRadius: 20,
+            backgroundColor: '#3F5060',
+            alignItems: 'center'
+        },
         textInputStyle: {
             height: 40, 
             width: 250, 
@@ -114,6 +135,9 @@ export default {
         handleListTap() {
         console.log('poop');
         }
+    },
+    components: {
+        MapView
     }
 }
 </script>
@@ -126,6 +150,9 @@ export default {
     flex: 1;
     width: 100%;
     height: 100%;
+}
+.map{
+    flex: 1
 }
 .text-color-primary {
     color: blue;

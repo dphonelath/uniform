@@ -29,15 +29,20 @@
                 <text :style= mapLocation>
                     910 16th St Mall #207, Denver, CO 80202
                 </text>
-                <image 
+                <text>Location:</text>
+                <text>{{location.latitude}}</text>
+                <map-view class="container"
+                        :initial-region="location"
+                    />
+                <!-- <image 
                     class= "vaji-pic"
-                    :source= "Vaji" />
+                    :source= "Vaji" /> -->
                 <touchable-opacity 
-                    :on-press= "handleButton"
+                    :on-press= "getLocation"
                     :style= generalButton
                     >
                 <button
-                    :on-press= "handleButton"
+                    :on-press= "getLocation"
                     title="Choose Tailor"
                     color="#fff"
                     :style="{
@@ -48,13 +53,14 @@
             </view>
             <scroll-view>
                 <view
-                    :on-press="handleButton"
+                    :on-press="onPressButton"
                     :style= alterationCard
                 >
                     <touchable-opacity
-                        class= 'icons-button'
-                        :on-press="handleButton"
+                        class= 'icons-button' 
+                        :on-press="onPressButton"
                         title="Shirt Alterations"
+                        v-bind:class="[alterationItems[0].selected ? 'icons-button2' : 'icons-button']"
                     >
                         <image 
                             class= "icons-pic"
@@ -63,7 +69,7 @@
                     </touchable-opacity>
                     <touchable-opacity
                         class= 'icons-button'
-                        :on-press="handleButton"
+                        :on-press="onPressButton"
                         title="Pant Alterations"
                     >
                         <image 
@@ -73,7 +79,7 @@
                     </touchable-opacity>
                     <touchable-opacity
                         class= 'icons-button'
-                        :on-press="handleButton"
+                        :on-press="onPressButton"
                         title="Shoe Repair"
                     >
                         <image 
@@ -83,7 +89,7 @@
                     </touchable-opacity>
                     <touchable-opacity
                         class= 'icons-button'
-                        :on-press="handleButton"
+                        :on-press="onPressButton"
                         title="Dress Alterations"
                     >
                         <image 
@@ -93,7 +99,7 @@
                     </touchable-opacity>
                     <touchable-opacity
                         class= 'icons-button'
-                        :on-press="handleButton"
+                        :on-press="onPressButton"
                         title="Suit Alterations"
                     >
                         <image 
@@ -104,31 +110,17 @@
                 </view>
             </scroll-view>
             <view 
-                :on-press="handleButton"
+                :on-press="onPressButton"
                 :style= requestCard
                 >
                     <text class= "description-text">Photos</text>
                     <touchable-opacity
                         :style= generalButton
-                        :on-press="handleButton"
-                        title="Take Photos"
-                    >
-                        <button
-                            :on-press="handleButton"
-                            title="Take Photos"
-                            color="#fff"
-                            :style="{
-                            fontWeight: 500, 
-                            }"
-                        />
-                    </touchable-opacity>
-                    <touchable-opacity
-                        :style= generalButton
-                        :on-press="handleButton"
+                        :on-press="pickImage"
                         title="Upload Photos"
                     >
                         <button
-                            :on-press="handleButton"
+                            :on-press="pickImage"
                             title="Upload Photos"
                             color="#fff"
                             :style="{
@@ -136,13 +128,21 @@
                             }"
                         />
                     </touchable-opacity>
+                    <!-- <camera class="container" :type="this.type"/> -->
                     <image 
-                        class= "vaji-pic"
-                        :source= "Blazer" />
+                        class= "camera-icon"
+                        :source= "CameraIcon"
+                        v-if= "!image"
+                        />
+                    <image 
+                        class= "camera-icon"
+                        :source= "image"
+                        v-if= "image && image.uri"
+                        />
             </view>
             <view 
                 :style= requestCard
-            >
+                >
                 <text class="description-text">Description</text>
                 <text-input
                     :style= descriptionBox
@@ -158,7 +158,7 @@
                         :source= "Calendar" />
                 <touchable-opacity
                         :style= generalButton
-                        :on-press="handleButton"
+                        :on-press="onPressButton"
                         title="Take Photos"
                     >
                         <button
@@ -202,8 +202,9 @@ import Short from "./assets/icons/short.png";
 import Sneaker from "./assets/icons/sneakers.png";
 import Suit from "./assets/icons/suit.png";
 import Blazer from "./assets/images/suit.jpg";
-import Calendar from "./assets/images/calendar.png"
-
+import Calendar from "./assets/images/calendar.png";
+import CameraIcon from "./assets/images/cameraIcon.png";
+import { Constants, Location, Permissions, MapView, Camera, ImagePicker } from "expo";
 
 export default {
     props: {
@@ -213,6 +214,31 @@ export default {
     },
     data(){
         return{
+        image: null,
+        hasCameraPermission: false,
+        alterationItems: [
+            {selected:false},
+            {selected:false},
+            {selected:false},
+            {selected:false},
+            {selected:false},
+            ],
+        iconClass: 'icons-button',
+        selectedClass: 'icons-button2',
+        type: Camera.Constants.Type.back,
+        location: {
+            latitude: 39.746583,
+            longitude: -104.994424,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421
+        },
+        errorMessage: "",
+        coordinates: {
+            latitude: 37.785834,
+            longitude: -122.406417,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421
+            },
         textInputStyle: {
             height: 40, 
             width: 250, 
@@ -331,21 +357,70 @@ export default {
         Sneaker,
         Suit,
         Blazer,
-        Calendar
+        Calendar, 
+        CameraIcon
     }},
+    components: {
+        MapView,
+        Camera
+    },
     methods: {
+        pickImage: function() {
+            Permissions.askAsync(Permissions.CAMERA_ROLL).then(status => {
+                if (status !== "granted") {
+                errorMessage = "Permission to access location was denied";
+                }
+            Expo.ImagePicker.launchImageLibraryAsync({
+                allowsEditing: true,
+                aspect: [1, 1]
+                })
+                .then((image) => {
+                    console.log(image)
+                    this.image = image
+                })
+
+            }).catch((err)=>{
+                console.log(err);
+            });
+        },
         handleButton() {
-        this.myInput = 'Button clicked'
-        this.navigation.navigate("Review")
+            this.myInput = 'Button clicked'
+            this.navigation.navigate("Review")
         },
         onPressButton: function() {
-        alert('Clicked Image')
+            console.log('clicked')
+            console.log(this.alterationItems)
         },
         handleListTap() {
         console.log('poop');
+        },
+        getLocation: function() {
+            Permissions.askAsync(Permissions.LOCATION).then(status => {
+                if (status !== "granted") {
+                errorMessage = "Permission to access location was denied";
+                }
+            Location.getCurrentPositionAsync({}).then(position => {
+                // this.$data.coordinates.longitude = position.coords.longitude
+                // this.$data.coordinates.latitiude = position.coords.latitude
+                this.location.longitude = position.coords.longitude
+                this.location.latitiude = position.coords.latitude
+                console.log(this.location)
+                });
+        }).catch((err)=>{
+        console.log(err);
+            });
         }
-    }
+    },
+    mounted: function() {
+        Permissions.askAsync(Permissions.CAMERA)
+            .then(status => {
+            hasCameraPermission = status.status == "granted" ? true : false;
+            }).catch((err)=>{
+                console.log(err);
+            });
+        },
 }
+
 </script>
 
 <style>
@@ -389,6 +464,17 @@ export default {
     border-width: 0;
     border-radius: 20;
 }
+.icons-button2{
+    display: flex;
+    height: 100px;
+    width: 300px;
+    flex-direction: row;
+    margin: 10px;
+    align-items: center;
+    background-color: #FC3C3C;
+    border-width: 0;
+    border-radius: 20;
+}
 .icon-text{
     font-size: 20px;
     font-weight: 700;
@@ -403,5 +489,9 @@ export default {
 .calendar-pic {
     height:300px;
     width: 300px;
+}
+.camera-icon{
+    width: 250px;
+    height: 250px;
 }
 </style>
